@@ -1,1 +1,1 @@
-# VK-JavaQA
+VK Course
