@@ -1,4 +1,4 @@
-package org.crist.Core;
+package org.crist.OKTests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
