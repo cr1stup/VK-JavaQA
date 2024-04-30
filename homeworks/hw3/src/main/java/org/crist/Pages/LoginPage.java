@@ -1,31 +1,41 @@
 package org.crist.Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
-    private static final By profileName = By.xpath("//*[@class='tico ellip']");
-    private static final By friendsButton = By.xpath("//*[@id='hook_Block_Navigation']//a[@data-l='t,userFriend']//div");
-    private static final By messagesButton = By.xpath("//*[@data-l='t,messages']//span[@class='toolbar_nav_i_ic']");
+    private static final String LOGIN = "technopol38";
+    private static final String PASSWORD = "technopolisPassword";
+    private static final By searchInput = By.xpath("//input[@name='st.query']");
+    private static final By loginInput = By.xpath("//input[@name='st.email']");
+    private static final By passwordInput = By.xpath("//input[@name='st.password']");
+    private static final By enterButton = By.xpath("//input[@class='button-pro __wide']");
 
-    public LoginPage() {
+    public LoginPage open() {
         checkPage();
+        return this;
     }
 
     public void checkPage() {
-        $(profileName).shouldBe(visible.because("profile name should be visible on login page"));
-        $(friendsButton).shouldBe(visible.because("friends button should be visible on login page"));
-        $(messagesButton).shouldBe(visible.because("message button should be visible on login page"));
+        $(loginInput).shouldBe(visible.because("login input should be visible on login page"));
+        $(passwordInput).shouldBe(visible.because("password input should be visible on login page"));
+        $(enterButton).shouldBe(visible.because("enter button should be visible on login page"));
     }
 
-    public String getProfileName() {
-        return $(profileName).text();
+    public SearchResultPage search(String searchString) {
+        $(searchInput).shouldBe(visible.because("search should be visible on login page"))
+                .setValue(searchString)
+                .sendKeys(Keys.ENTER);
+        return new SearchResultPage();
     }
 
-    public FriendsPage openFriendsSearch() {
-        $(friendsButton).click();
-        return new FriendsPage();
+    public FeedPage login() {
+        $(loginInput).shouldBe(visible.because("login input should be visible on login page")).setValue(LOGIN);
+        $(passwordInput).shouldBe(visible.because("password input should be visible on login page")).setValue(PASSWORD);
+        $(enterButton).shouldBe(visible.because("enter button should be visible on login page")).click();
+        return new FeedPage();
     }
 }
