@@ -1,36 +1,36 @@
 package org.crist.Pages;
 
+import org.crist.Utils.Elements.LeftSideMenu;
+import org.crist.Utils.Loadable.LoadablePage;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-public class FeedPage {
-    private static final By profileName = By.xpath("//*[@class='tico ellip']");
-    private static final By friendsButton = By.xpath("//*[@id='hook_Block_Navigation']//a[@data-l='t,userFriend']//div");
+public class FeedPage implements LoadablePage {
+    private final LeftSideMenu leftMenu = new LeftSideMenu();
     private static final By messagesButton = By.xpath("//*[@data-l='t,messages']//span[@class='toolbar_nav_i_ic']");
 
     public FeedPage() {
         checkPage();
     }
 
+    @Override
     public void checkPage() {
-        $(profileName).shouldBe(visible.because("profile name should be visible on feed page"));
-        $(friendsButton).shouldBe(visible.because("friends button should be visible on feed page"));
+        $(leftMenu.getProfileName()).shouldBe(visible.because("profile name should be visible on feed page"));
+        $(leftMenu.getFriendsButton()).shouldBe(visible.because("friends button should be visible on feed page"));
         $(messagesButton).shouldBe(visible.because("message button should be visible on feed page"));
     }
 
     public String getProfileName() {
-        return $(profileName).text();
+        return $(leftMenu.getProfileName()).text();
     }
 
     public FriendsPage openFriendsSearch() {
-        $(friendsButton).shouldBe(visible.because("friends button should be visible on feed page")).click();
-        return new FriendsPage();
+        return leftMenu.openFriendsSearch();
     }
 
     public ProfilePage openProfile() {
-        $(profileName).shouldBe(visible.because("profile name should be visible on feed page")).click();
-        return new ProfilePage();
+        return leftMenu.openProfile();
     }
 }

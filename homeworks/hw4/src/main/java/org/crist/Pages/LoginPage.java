@@ -1,12 +1,13 @@
 package org.crist.Pages;
 
+import org.crist.Utils.Loadable.LoadablePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-public class LoginPage {
+public class LoginPage implements LoadablePage {
     private static final String LOGIN = "technopol38";
     private static final String PASSWORD = "technopolisPassword";
     private static final By searchInput = By.xpath("//input[@name='st.query']");
@@ -19,6 +20,7 @@ public class LoginPage {
         return this;
     }
 
+    @Override
     public void checkPage() {
         $(loginInput).shouldBe(visible.because("login input should be visible on login page"));
         $(passwordInput).shouldBe(visible.because("password input should be visible on login page"));
