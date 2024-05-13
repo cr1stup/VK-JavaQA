@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetAboutTest extends BaseTest {
     private ProfilePage profilePage;
+    
     @ParameterizedTest
     @ValueSource(strings = {"Hello", "My name is John", "can be more than 150 characters here"})
     @DisplayName("Test field about on profile page")
