@@ -8,10 +8,12 @@ abstract public class BaseBrowser implements BrowserManager {
     public void browserURL(String url) {
         Configuration.baseUrl = url;
     }
+    
     @Override
     public void openBrowser() {
         Selenide.open("/");
     }
+    
     @Override
     public void closeBrowser() {
         Selenide.closeWebDriver();
