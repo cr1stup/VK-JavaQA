@@ -27,6 +27,7 @@ public class LeftSideMenu {
     public By getFriendsButton() {
         return friendsButton;
     }
+    
     public FriendsPage openFriendsSearch() {
         $(friendsButton).shouldBe(visible.because("friends button should be visible on feed page")).click();
         return new FriendsPage();
