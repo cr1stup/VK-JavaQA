@@ -11,6 +11,7 @@ public class TestsData {
         return new Object[][]{
                 {"What A Wonderful World"},
                 {"sunflower"},
+                {"Smash Mouth - All Star"},
         };
     }
 }

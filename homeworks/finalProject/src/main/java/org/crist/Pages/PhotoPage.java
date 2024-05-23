@@ -14,8 +14,6 @@ public class PhotoPage implements LoadablePage {
     private static final By createAlbumButton = By.xpath("//a[@role='button']");
     private static final By allPhotosField = By.xpath("//a[@id='tab-all-photos']");
     private static final By albumsField = By.xpath("//a[@id='tab-albums']");
-    private static final By uploadedPhoto = By.xpath("//img[@class='photo-img__tt8r9']");
-    private static final By threePoint = By.xpath("//button[@class='button-clean__0wfyv action-button-container__czsac']");
 
     public PhotoPage() {
         checkPage();
@@ -28,14 +26,9 @@ public class PhotoPage implements LoadablePage {
         $(albumsField).shouldBe(visible.because("albumsField should be visible on photo page"));
     }
 
-    public boolean uploadFile()  {
-        $(uploadButton).uploadFile(new File("src/main/java/org/crist/Utils/Data/example.jpg"));
+    public boolean uploadFile() {
+        $(uploadButton).uploadFile(new File("src/main/resources/example.jpg"));
         $(successUpload).shouldBe(visible.because("successUpload icon should be visible after upload"));
         return true;
     }
-
-    /*public void deletePhoto() {
-        $(uploadedPhoto).shouldBe(visible.because("visible")).click();
-        $(threePoint).shouldBe(visible.because("visible")).click();
-    }*/
 }
