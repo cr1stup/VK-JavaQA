@@ -20,7 +20,7 @@ public class AddMusicTest extends BaseTest {
     public void testAddMusic(String title) {
         Assertions.assertTrue(
                 musicPage.addMusic(title),
-                "Login strange account");
+                "no music added");
     }
 
     @BeforeEach

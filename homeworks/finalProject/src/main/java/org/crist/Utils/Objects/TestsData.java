@@ -10,6 +10,7 @@ public class TestsData {
     public static Object[][] musicTitles() {
         return new Object[][]{
                 {"What A Wonderful World"},
+                {"sunflower"},
         };
     }
 }
