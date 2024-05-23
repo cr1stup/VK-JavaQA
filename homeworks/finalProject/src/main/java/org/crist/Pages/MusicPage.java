@@ -2,7 +2,6 @@ package org.crist.Pages;
 
 import org.crist.Utils.Loadable.LoadablePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -12,6 +11,7 @@ public class MusicPage implements LoadablePage {
     private static final By myMusicField = By.xpath(".//div[contains(text(),'Моя музыка')]");
     private static final By popularField = By.xpath(".//div[contains(text(),'Популярное')]");
     private static final By musicPlayerField = By.xpath("//wm-track[1]//slot[2]//wm-card-details[1]//slot[1]//div[1]");
+    private static final By findButton = By.xpath("//wm-icon[@class='submit']//*[name()='svg']");
     private static final By deleteButton = By.xpath("//button[contains(@title,'Удалить')]" +
             "//wm-icon//*[name()='svg']//*[name()='path' and contains(@fill-rule,'evenodd')]");
     private static final By addToMyMusicButton = By.xpath("//slot[@name='controls']//wm-icon[@aria-label='В мою музыку']" +
@@ -30,7 +30,7 @@ public class MusicPage implements LoadablePage {
 
     public boolean addMusic(String title) {
         $(findMusicField).shouldBe(visible.because("findMusicField should be visible on music page")).setValue(title);
-        $(findMusicField).shouldBe(visible.because("findMusicField should be visible on music page")).sendKeys(Keys.ENTER);
+        $(findButton).shouldBe(visible.because("findButton should be visible on music page")).click();
         $(musicPlayerField).shouldBe(visible.because("musicPlayerField should be visible on music page")).hover();
         $(addToMyMusicButton).shouldBe(visible.because("addToMyMusicButton should be visible on music page")).click();
         return true;
