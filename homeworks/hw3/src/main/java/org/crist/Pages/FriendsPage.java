@@ -7,8 +7,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class FriendsPage {
     private static final By findFriendsButton = By.xpath("//*[@class='stub-empty_controls']//a");
-    private static final By allButton = By.xpath("//*[@class='mctc_navMenuSec ellip-menu-item  mctc_navMenuActiveSec']");
-    private static final By onSiteButton = By.xpath("//*[contains(@hrefattrs, 'st.cmd=userFriendRequest&st')]");
+    private static final By allButton = By.xpath("//*[contains(@hrefattrs, 'ViewAll')]");
+    private static final By friendsRequestButton = By.xpath("//*[contains(@hrefattrs, 'ViewRequests')]");
     private static final By moreButton = By.xpath("//*[contains(@class, 'mctc_navMenuDropdownSecLabelText')]");
 
     public FriendsPage() {
@@ -17,7 +17,7 @@ public class FriendsPage {
 
     public void checkPage() {
         $(allButton).shouldBe(visible.because("all button should be visible on friends page"));
-        $(onSiteButton).shouldBe(visible.because("onSite button should be visible on friends page"));
+        $(friendsRequestButton).shouldBe(visible.because("onSite button should be visible on friends page"));
         $(moreButton).shouldBe(visible.because("more button should be visible on friends page"));
     }
 
